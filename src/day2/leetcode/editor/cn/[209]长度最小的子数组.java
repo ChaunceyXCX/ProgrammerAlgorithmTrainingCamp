@@ -52,14 +52,19 @@
 class Solution {
     public int minSubArrayLen(int target, int[] nums) {
         //滑动窗口双指针
-        if (nums[0]>=target){
-            return 1;
-        }
+        int result = Integer.MAX_VALUE; //将返回值设置为最大值,用于后续判断是否存在子数组
         int sum = 0;
-        for (int i=0, j = 1; j < nums.length;){
-            sum = sum[i]+sum
-            if (nums[i]+nums)
+        int j = 0; // 头指针
+        int subLength = 0;  //每次到达临界点的窗口长度
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            while (sum>=target){
+                subLength = i-j+1;
+                result = result>subLength?subLength:result; //如果当前子列长度小于前期的子列,就替换
+                sum -= nums[j++]; //这里将 前指针右移,且目前总和减去j位的
+            }
         }
+        return result> nums.length?0:result;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
