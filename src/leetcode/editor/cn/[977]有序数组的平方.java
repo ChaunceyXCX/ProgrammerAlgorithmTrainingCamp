@@ -44,19 +44,7 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] sortedSquares(int[] nums) {
-        //双指针
-        int k = nums.length;
-        int[] result = new int[k--];
-        for (int i = 0,j = nums.length-1; i <=j;) { //两个指针汇合时是最小数要判断放在result[0]
-            if (nums[i]*nums[i]<nums[j]*nums[j]){
-                result[k--] = nums[j]*nums[j];
-                j--; //哪个指针大哪个指针移动
-            }else {
-                result[k--] = nums[i]*nums[i];
-                i++;
-            }
-        }
-        return result;
+
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
