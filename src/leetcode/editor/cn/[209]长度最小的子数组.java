@@ -51,7 +51,18 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int minSubArrayLen(int target, int[] nums) {
-
+        //滑动窗口---双指针
+        int subLength = Integer.MAX_VALUE;
+        int temp = 0;
+        for (int i=0, j = 0; j < nums.length ; j++){
+            temp+=nums[j];
+            while (temp>=target){ //当加起来大于目标值时一直移动i直至小于才放开,进入j指针后移
+                subLength = (j-i+1)<subLength?(j-i+1):subLength;
+                temp-=nums[i];
+                i++;
+            }
+        }
+        return subLength<Integer.MAX_VALUE?subLength:0;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
