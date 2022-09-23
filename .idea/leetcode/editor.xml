@@ -6,10 +6,10 @@
         <entry key="$PROJECT_DIR$/src/day2/leetcode/editor/cn/[203]移除链表元素.java">
           <value>
             <LeetcodeEditor>
-              <option name="contentPath" value="$PROJECT_DIR$/src/day2/leetcode/editor/cn/doc/content/[203]移除链表元素.md" />
+              <option name="contentPath" value="$PROJECT_DIR$/src/leetcode/editor/cn/doc/content/[203]移除链表元素.md" />
               <option name="frontendQuestionId" value="leetcode.cn203" />
               <option name="host" value="leetcode.cn" />
-              <option name="path" value="$PROJECT_DIR$/src/day2/leetcode/editor/cn/[203]移除链表元素.java" />
+              <option name="path" value="$PROJECT_DIR$/src/leetcode/editor/cn/[203]移除链表元素.java" />
               <option name="titleSlug" value="remove-linked-list-elements" />
             </LeetcodeEditor>
           </value>
@@ -44,6 +44,39 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/src/day2/leetcode/editor/cn/[977]有序数组的平方.java" />
               <option name="titleSlug" value="squares-of-a-sorted-array" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/leetcode/editor/cn/[203]移除链表元素.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/leetcode/editor/cn/doc/content/[203]移除链表元素.md" />
+              <option name="frontendQuestionId" value="leetcode.cn203" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/leetcode/editor/cn/[203]移除链表元素.java" />
+              <option name="titleSlug" value="remove-linked-list-elements" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/leetcode/editor/cn/[206]反转链表.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/leetcode/editor/cn/doc/content/[206]反转链表.md" />
+              <option name="frontendQuestionId" value="leetcode.cn206" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/leetcode/editor/cn/[206]反转链表.java" />
+              <option name="titleSlug" value="reverse-linked-list" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/leetcode/editor/cn/[707]设计链表.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/leetcode/editor/cn/doc/content/[707]设计链表.md" />
+              <option name="frontendQuestionId" value="leetcode.cn707" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/leetcode/editor/cn/[707]设计链表.java" />
+              <option name="titleSlug" value="design-linked-list" />
             </LeetcodeEditor>
           </value>
         </entry>
