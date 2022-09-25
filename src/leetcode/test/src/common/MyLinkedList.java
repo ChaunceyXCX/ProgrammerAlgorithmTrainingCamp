@@ -14,6 +14,12 @@ public class MyLinkedList {
 
     }
 
+    public MyLinkedList(int i, MyLinkedList head) {
+        this.val = i;
+        this.next = head;
+    }
+
+
     public int get(int index) {
         int current = 0;
         MyLinkedList currentNode = this.next;
@@ -84,5 +90,46 @@ public class MyLinkedList {
         for (int i = 0; i < ints.length; i++) {
             this.addAtIndex(i,ints[i]);
         }
+    }
+
+    public void printList(){
+        MyLinkedList cur = this;
+        StringBuilder s = new StringBuilder();
+        while (cur != null) {
+            s.append(cur.val).append("->");
+            cur = cur.next;
+        }
+        System.out.println(s);
+    }
+
+    public MyLinkedList getIntersectionNode(MyLinkedList headA, MyLinkedList headB) {
+        //反转链表
+        MyLinkedList headAA = headA;
+        headAA = reverseList(headAA);
+        MyLinkedList headBB = headB;
+        headBB = reverseList(headBB);
+        //找到第一个下一节点不等的节点
+        while (headAA.next.val==headBB.next.val){
+            System.out.println(headAA.val);
+            System.out.println(headBB.val);
+            headAA = headAA.next;
+            headBB = headBB.next;
+
+        }
+        return headAA;
+
+
+    }
+
+    public MyLinkedList reverseList(MyLinkedList head){
+        MyLinkedList pre = null;
+        MyLinkedList cur = head;
+        while (cur!=null){
+            MyLinkedList temp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = temp;
+        }
+        return pre;
     }
 }
