@@ -40,28 +40,19 @@ class Solution {
         char[] chars = s.toCharArray();
         int left = 0;
         int rigih = 0;
-        int temp = 0;
-        for (int i = 0; i < chars.length; i++) {
-            temp++;
-            if (temp==2*k){
-                left = i-2*k+1;
-                rigih = i-k;
-                reverseSubArray(left,rigih,chars);
-                temp = 0;
+        for (int i = 0; i < chars.length; i+=2*k) {
+
+            //剩余字符小于2k，大于等于k
+            if (i+k<= chars.length){
+                reverseSubArray(i,i+k-1,chars);
+                continue;
             }
+
+            reverseSubArray(i, chars.length-1,chars);
+
         }
 
-        if (temp<k){
-            left = chars.length-temp;
-            rigih = chars.length-1;
-            reverseSubArray(left,rigih,chars);
-        }
-        if (temp<2*k && temp>=k){
-            left = chars.length-temp;
-            rigih = left+k-1;
-            reverseSubArray(left,rigih,chars);
-        }
-        return String.copyValueOf(chars);
+        return new String(chars);
     }
 
     private void reverseSubArray(int left, int right, char[] chars){
