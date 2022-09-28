@@ -45,20 +45,20 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean isHappy(int n) {
-        Set<Integer> sums = new HashSet<>();
+        Set<Integer> sums = new HashSet<>(); //保存每次的位平方和
         int sum = 0;
         while (true) {
-            while (n!=0){
+            while (n!=0){  //这个循环就是计算每一轮的位平方和
                 sum += (n%10)*(n%10);
                 n = n/10;
             }
             if (sum == 1){
                 return true;
             }
-            if (sums.contains(sum)){
+            if (sums.contains(sum)){  //如果位平方和重复出现那么就判定出现死循环,返回退出
                 return false;
             }
-            sums.add(sum);
+            sums.add(sum); //缓存位平方和
             n = sum;
             sum = 0;
         }
