@@ -68,10 +68,38 @@
 // Related Topics 栈 数组 数学 👍 609 👎 0
 
 
+import java.util.Stack;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int evalRPN(String[] tokens) {
-
+        Stack<Integer> stack = new Stack<>();
+        Integer temp = null;
+        int left, right; //因为键和除对元素前后有影响所以统一记录前后元素计算
+        for (String token : tokens) {
+            if (!(token.equals("+")
+                    || token.equals("-")
+                    || token.equals("*")
+                    || token.equals("/"))) {
+                stack.push(Integer.valueOf(token));
+            } else {
+                right = stack.pop();
+                left = stack.pop();
+                if (token.equals("+")) {
+                    temp = left + right;
+                } else if (token.equals("-")) {
+                    temp = left - right;
+                } else if (token.equals("*")) {
+                    temp = left * right;
+                } else if (token.equals("/")) {
+                    temp = left / right;
+                }
+                if (temp != null) {
+                    stack.push(temp);
+                }
+            }
+        }
+        return stack.pop();
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
