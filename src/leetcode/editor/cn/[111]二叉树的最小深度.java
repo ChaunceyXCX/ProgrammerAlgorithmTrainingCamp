@@ -57,6 +57,16 @@ class Solution {
         if (cur == null) return 0;
         int left = getMinDepth(cur.left);
         int right = getMinDepth(cur.right);
+        // 左右叶子节点都为空的节点才算数所以有如下三种情况
+        // 如果左叶子节点不为空右叶子节点为空，那么计算左叶子节点对应的最小深度
+        if (cur.left != null && cur.right == null) {
+            return 1+left;
+        }
+        // 如果右叶子节点不为空，且左叶子节点为空，那么查找右叶子节点的最小深度并+1返回
+        if (cur.right != null && cur.left == null) {
+            return 1+right;
+        }
+        // 如果都为空返回最小值
         return 1+Math.min(left,right);
     }
 }
