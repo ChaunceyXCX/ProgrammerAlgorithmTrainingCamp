@@ -55,25 +55,36 @@ import java.util.*;
  * }
  */
 class Solution {
+
+    private int maxDepth = Integer.MIN_VALUE;
+    private int result;
     public int findBottomLeftValue(TreeNode root) {
-        //层序遍历
-        Deque<TreeNode> deque = new LinkedList<>();
-        if (root != null) deque.push(root);
-        Stack<Integer> stack = new Stack<>();
-        while (!deque.isEmpty()) {
-            int size = deque.size();
-            Integer i = null;
-            while (size-->0) {
-                TreeNode node = deque.pollLast();
-                if (node.left != null) deque.push(node.left);
-                if (node.right != null) deque.push(node.right);
-                if (i==null) {
-                    i = node.val;
-                }
+        getLeft(root,0);
+        return result;
+    }
+
+    public void getLeft(TreeNode cur, int depth){
+        //递归终止条件
+        if (cur.left == null && cur.right == null) {
+            // depth已经在上轮递归中加1了
+            if (maxDepth<depth){
+                maxDepth = depth;
+                result = cur.val;
             }
-            stack.push(i);
         }
-        return stack.pop();
+
+        //注意一定要先访问左子树，因为要保证从左边搜索
+        if (cur.left != null) {
+            depth++;
+            getLeft(cur.left, depth);
+            depth--; //回溯
+        }
+        if (cur.right != null) {
+            depth++;
+            getLeft(cur.right, depth);
+            depth--; //回溯
+        }
+
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
