@@ -44,8 +44,8 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Definition for a binary tree node.
@@ -63,34 +63,39 @@ import java.util.List;
  * }
  */
 class Solution {
-    List<Integer> inOrderNods = new ArrayList<>();
+
+    int maxCount = 0;
+    int count = 0;
+    TreeNode pre = null;
+    List<Integer> res = new ArrayList<>();
     public int[] findMode(TreeNode root) {
-        if (root == null) return null;
-        getInorders(root);
-        if (inOrderNods.size() == 1){
-            return new int[]{inOrderNods.get(0)};
-        }
-        List<Integer> list = new ArrayList<>();
-        int maxCount = 0;
-        int start = 0;
-        int end = 1;
-        while (end<inOrderNods.size()){
-            if (inOrderNods.get(start) == inOrderNods.get(end)){
-                end++;
-            }else {
-                maxCount =
-            }
-        }
+        searceBST(root);
+        return res.stream().mapToInt(Integer::intValue).toArray();
     }
 
-    public void getInorders(TreeNode root) {
+    public void searceBST(TreeNode root) {
         if (root == null) return;
-        //左
-        getInorders(root.letf);
+        searceBST(root.left); //左
         //中
-        inOrderNods.add(root.val);
-        //右
-        getInorders(root.right);
+        if (pre == null){ //第一个节点
+            count = 1;
+        }else if (pre.val== root.val) { //与前一个节点相等
+            count++;
+        }else { //与前一个节点不等
+            count = 1;
+        }
+        pre = root;
+        if (count == maxCount){ //重复最大频率节点
+            res.add(root.val);
+        }
+
+        //最大频率节点更新
+        if (count>maxCount){
+            res.clear();
+            res.add(root.val);
+            maxCount = count;
+        }
+        searceBST(root.right); //右
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
