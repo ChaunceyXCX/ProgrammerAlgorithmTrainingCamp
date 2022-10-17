@@ -65,26 +65,25 @@ class Solution {
 
     public void backTracking(int k,int n, int startIndex){
         if (path.size() == k) {
-            if (sumPath(path) == n){
+            if (pathSum == n){
                 result.add(new ArrayList<>(path));
             }
             return;
         }
 
-        for (int i=startIndex ; i<=9; i++) {
+        for (int i=startIndex ; i<=9-(k-path.size())+1; i++) {
             path.add(i);
             pathSum+=i;
+            //剪枝
+            if (pathSum>n){
+                pathSum-=i;
+                path.remove(path.size()-1);
+                return;
+            }
             backTracking(k,n,i+1); // 递归
+            pathSum-=i;
             path.remove(path.size()-1);
         }
-    }
-
-    public int sumPath(List<Integer> list) {
-        int sum = 0;
-        for (Integer integer : list) {
-            sum+= integer;
-        }
-        return sum;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
