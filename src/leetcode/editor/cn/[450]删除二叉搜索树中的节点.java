@@ -54,7 +54,7 @@
 //
 // 进阶： 要求算法时间复杂度为 O(h)，h 为树的高度。 
 //
-// Related Topics 树 二叉搜索树 二叉树 👍 973 👎 0
+// Related Topics 树 二叉搜索树 二叉树 👍 972 👎 0
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
@@ -75,41 +75,8 @@
  */
 class Solution {
     public TreeNode deleteNode(TreeNode root, int key) {
-        // 递归终止条件
-        //第一种情况没有找到要删除节点
-        if(root == null) return null;
-        if(root.val == key) {
-             // 第一种情况 左右子树都为空
-            if (root.left == null && root.right == null){
-                root = null;
-                return root;
-            }
-            // 第二种情况 左子树为空右子树不为空
-            else if (root.left == null && root.right != null){
-                return root.right;
-            }
-            // 第三种情况 左子树不为空右子树为空
-            else if (root.left != null && root.right == null) {
-                return root.left;
-            }
-            // 第四种情况 左右子树都不为空 ：将左子树指向右子树最右边节点返回右子树根节点
-            else {
-                TreeNode node = root.right;
-                // 查找右子树左下角
-                while (node.left != null){
-                    node = node.left;
-                }
-                node.left = root.left;
-                return root.right;
-            }
-        }
+        //递归终止条件
 
-        // 根据二叉搜索树的特性向左或者向右搜索
-        //如果搜索到了下一层返回的就是重新指向的左或者右节点
-        if (root.val > key) root.left = deleteNode(root.left,key);
-        if (root.val < key) root.right = deleteNode(root.right,key);
-        // 然后递归返回当前节点
-        return root;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
