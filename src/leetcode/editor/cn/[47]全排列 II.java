@@ -57,7 +57,7 @@ class Solution {
             if (used[i]){
                 continue;
             }
-            //同树层中如果前一个元素引用过直接跳过，如果没有用过
+            //同树层中如果前一个元素引用过直接跳过，如果前一个元素已经在used数组中的话当前层就不会出现前一个元素
             if (i>0 && used[i-1] == false && nums[i] == nums[i-1]){
                 continue;
             }
