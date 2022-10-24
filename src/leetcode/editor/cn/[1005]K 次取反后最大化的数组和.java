@@ -55,14 +55,25 @@ import java.util.stream.IntStream;
 class Solution {
 
     public int largestSumAfterKNegations(int[] nums, int k) {
-        //
+        //第一步按照绝对值排序降序
         nums = IntStream.of(nums)
                 .boxed()
                 .sorted((o1, o2) -> Math.abs(o2) - Math.abs(o1))
                 .mapToInt(Integer::intValue).toArray();
+        //第二步从绝对值大的开始遍历遇到复数就取反,k--
         for (int i = 0; i < nums.length; i++) {
-            
+            if (k>0&& nums[i]<0){
+                k--;
+                nums[i] = nums[i]*-1;
+            }
         }
+        // 第三步如果k仍大于0且k是奇数就对最小的取反
+        if (k>0 && k%2>0){
+            nums[nums.length-1] = nums[nums.length-1]*-1;
+        }
+        // 第四步求和
+
+        return Arrays.stream(nums).sum();
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
