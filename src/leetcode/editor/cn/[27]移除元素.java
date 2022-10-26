@@ -61,26 +61,18 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int removeElement(int[] nums, int val) {
-        //双向指针
-        int right= nums.length-1;
-        int left= 0;
-        while (left <= right){
-            //找左边等于目标值的
-            while (left<=right && nums[left] != val){
+        int left = 0,right = nums.length-1;
+        while (left<=right){
+            while (nums[left] != val && left<= right){
                 ++left;
             }
-            // 找右边不等于目标值的元素
-            while (right>=left && nums[right] == val){
+            while (nums[right] == val && left<=right){
                 --right;
             }
-
-
-            if (left<right){ //这层判断是因为上面查找下标时左右相等时还会加或者减
-                nums[left++]=nums[right--]; //这里覆盖后还要前移下标,到最后一位时下标++正好也就是数组长度
+            if (left<right){
+                nums[left++] = nums[right--];
             }
-
         }
-
         return left;
     }
 }
