@@ -44,23 +44,20 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] sortedSquares(int[] nums) {
-        //双指针
-        int i = 0;
-        int j = nums.length-1;
-        int size = nums.length;
-        int[] newArr = new int[size];
-        size = size-1;
-        while (i<=j){
-            if (nums[i]*nums[i]<=nums[j]*nums[j]){
-                newArr[size--] = nums[j]*nums[j];
-                j--;
+        int[] res = new int[nums.length];
+        int left = 0,right = nums.length-1;
+        int resIdx = nums.length-1;
+        while (left<=right){
+            if (nums[left]*nums[left]<= nums[right]*nums[right]){
+                res[resIdx] = nums[right]*nums[right];
+                right--;
             }else {
-                newArr[size--] = nums[i]*nums[i];
-                i++;
+                res[resIdx] = nums[left]*nums[left];
+                left++;
             }
+            resIdx--;
         }
-        return newArr;
-
+        return res;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
