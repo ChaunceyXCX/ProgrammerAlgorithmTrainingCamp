@@ -35,9 +35,12 @@
 // Related Topics 记忆化搜索 数学 动态规划 👍 2713 👎 0
 
 
+import java.util.Arrays;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int climbStairs(int n) {
+        /*
         // 1.确定dp数组及下标含义：dp[i] = 斐波那契数列第i个数的含义
         // 2.确定递推公式：dp[i] = dp[i-1]+dp[i-1]
         // 3.数组如何初始化： dp[0] = 0; dp[1] = 1;
@@ -51,6 +54,24 @@ class Solution {
             dp[i] = dp[i-1]+dp[i-2];
         }
         return dp[n-1];
+        */
+
+        return bag_full(n,2);
+    }
+
+
+    public int bag_full(int n, int m){
+        //之前是每次能爬1-2 现在进阶每次能爬1-m
+        //完全背包-排列
+        int[] dp = new int[n+1];
+        dp[0]=1;
+        for (int j = 0; j <= n; j++) {
+            for (int i = 1; i < m; i++) {
+                if (j-i>=0) dp[j]+=dp[j-i];
+            }
+        }
+        System.out.println(Arrays.toString(dp));
+        return dp[n];
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
