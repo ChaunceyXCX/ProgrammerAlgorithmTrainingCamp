@@ -56,9 +56,11 @@
 class Solution {
     public int change(int amount, int[] coins) {
         int[] dp = new int[amount+1];
+        dp[0] = 1; //这里dp[0]等于0的话累加出来结果就为0了，其实可以理解为背包容量为0时只有一种组合方式
+        //先物品后背包的完全背包是组合,先背包后物品的完全背包是排列
         for (int i = 0; i < coins.length; i++) {
-            for (int j = coins[i]; j <=amount ; j++) {
-                if (j-coins[i]>=0) dp[j] = Math.max(dp[j],dp[j-coins[i]]+1);
+            for (int j = coins[i]; j <= amount; j++) {
+                dp[j]+=dp[j-coins[i]];
             }
         }
         return dp[amount];
