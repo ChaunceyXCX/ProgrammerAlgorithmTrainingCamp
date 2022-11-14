@@ -45,14 +45,18 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int maxProfit(int[] prices) {
-        int res = 0;
+        //0买入,1卖出
+        int[][] dp = new int[prices.length][2];
+        dp[0][0] = -prices[0];
+
         for (int i = 1; i < prices.length; i++) {
-            int cur = prices[i]-prices[i-1];
-            if ( cur > 0){
-                res+=cur;
-            }
+            // 买入.昨天卖出今天买入,昨天买入今天保持
+            dp[i][0] = Math.max(dp[i-1][1]-prices[i],dp[i-1][0]);
+            // 卖出.昨天买入今天卖出,昨天卖出今天保持
+            dp[i][1] = Math.max(dp[i-1][0]+prices[i],dp[i-1][1]);
+
         }
-        return res;
+        return Math.max(dp[prices.length-1][0],dp[prices.length-1][1]);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

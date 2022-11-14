@@ -43,17 +43,15 @@
 // leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int maxProfit(int[] prices, int fee) {
-        int buy = prices[0] + fee;
-        int sum = 0;
-        for (int p : prices) {
-            if (p + fee < buy) {
-                buy = p + fee;
-            } else if (p > buy){
-                sum += p - buy;
-                buy = p;
-            }
+        int[][] dp = new int[prices.length][2];
+        dp[0][0] = -prices[0]-fee;
+        for (int i = 1; i < prices.length; i++) {
+            //买入,昨天买入今天保持(利润还是昨天的因为还没有卖出),昨天卖出今天买入(卖出时的利润减去买入消费)
+            dp[i][0] = Math.max(dp[i-1][0], dp[i-1][1]-prices[i]-fee);
+            // 卖出.昨天卖出今天保持(今天依旧是卖出状态的话利润不变化),昨天买入今天卖出(卖出后的钱一定是买入后剩余的钱加上今天卖出得到的钱)
+            dp[i][1] = Math.max(dp[i-1][1],dp[i-1][0]+prices[i]);
         }
-        return sum;
+        return Math.max(dp[prices.length-1][0],dp[prices.length-1][1]);
     }
 }
 // leetcode submit region end(Prohibit modification and deletion)
