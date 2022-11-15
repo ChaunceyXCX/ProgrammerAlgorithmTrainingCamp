@@ -39,25 +39,10 @@
 // Related Topics 广度优先搜索 数组 动态规划 👍 2190 👎 0
 
 
-import java.util.Arrays;
-
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int coinChange(int[] coins, int amount) {
-        int[] dp = new int[amount+1];
-        //递推公式为当前数量和前一个最小数量+1  中的最小值  所以要初始化为整型最大值否者会一直是0
-        Arrays.fill(dp,Integer.MAX_VALUE);
-        dp[0] = 0;
-        for (int i = 0; i < coins.length; i++) {
-            for (int j = coins[i]; j <=amount ; j++) {
-                //当前一个最小数量为最大整形时无法加一，会变成负数
-                if (dp[j-coins[i]]!= Integer.MAX_VALUE){
-                    dp[j] = Math.min(dp[j], dp[j-coins[i]]+1);
-                }
-            }
-        }
-        if (dp[amount] == Integer.MAX_VALUE) return -1;
-        return dp[amount];
+
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

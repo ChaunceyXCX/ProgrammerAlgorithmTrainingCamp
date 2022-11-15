@@ -27,27 +27,13 @@
 // 1 <= n <= 10⁴ 
 // 
 //
-// Related Topics 广度优先搜索 数学 动态规划 👍 1531 👎 0
+// Related Topics 广度优先搜索 数学 动态规划 👍 1530 👎 0
 
-
-import java.util.Arrays;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int numSquares(int n) {
-        int[] dp = new int[n+1];
-        //由递推公式每轮循环取最小值，所以0之后的都要给最大整数
-        Arrays.fill(dp, Integer.MAX_VALUE);
-        dp[0] = 0;
-        for (int i = 1; i <= n; i++) {
-            for (int j = i*i; j <= n ; j++) {
-                //前一位就是 加上i*i = j 那一位
-                if (dp[j-i*i] != Integer.MAX_VALUE){
-                    dp[j] = Math.min(dp[j], dp[j-i*i]+1);
-                }
-            }
-        }
-        return dp[n];
+
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
