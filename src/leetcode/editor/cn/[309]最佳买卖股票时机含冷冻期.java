@@ -40,8 +40,17 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int maxProfit(int[] prices) {
-        int[][] dp = new int[prices.length][3];
-        dp[0] = new int[]{}
+        int len = prices.length;
+        int[][] dp = new int[len][3];
+        dp[0][0] = -prices[0];
+        for (int i = 1; i < len; i++) {
+            dp[i][0] = Math.max(dp[i-1][0],Math.max(dp[i-1][3]-prices[i],dp[i-1][1]-prices[i]));
+            dp[i][1] = Math.max(dp[i-1][1],dp[i-1][3]);
+            dp[i][2] = dp[i-1][0]+prices[i];
+            dp[i][3] = dp[i-1][2];
+        }
+
+        return Math.max(dp[len-1][3],Math.max(dp[len-1][1],dp[len-1][2])); //买入状态不可能是最大的
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
