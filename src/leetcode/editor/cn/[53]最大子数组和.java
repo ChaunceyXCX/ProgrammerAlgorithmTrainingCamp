@@ -42,19 +42,19 @@
 // Related Topics 数组 分治 动态规划 👍 5388 👎 0
 
 
+import java.util.Arrays;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int maxSubArray(int[] nums) {
-        int res = Integer.MIN_VALUE;
-        int count = 0;
-        for (int i = 0; i < nums.length; i++) {
-            count += nums[i];
-            if (count>res) { //取区间最大值 保证res中存放的一定是最大和
-                res = count;
-            }
-            if (count<=0) count = 0; //如果总和小于等于0 的话重新计算count
+        int[] dp = Arrays.copyOf(nums,nums.length);
+        int resul = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            dp[i] = Math.max(dp[i-1]+nums[i], dp[i]);
+            if (resul<dp[i]) resul = dp[i];
         }
-        return res;
+        return resul;
+
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
