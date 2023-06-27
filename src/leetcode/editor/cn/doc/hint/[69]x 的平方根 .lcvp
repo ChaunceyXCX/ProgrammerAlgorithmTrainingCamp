@@ -1,0 +1,26 @@
+<div>
+ <details>
+  <summary>Similar Questions</summary>
+  <div>
+   <li>Pow(x, n) <b>Medium</b></li>
+   <li>Valid Perfect Square <b>Easy</b></li>
+  </div>
+ </details>
+</div>
+<div>
+ <details>
+  <summary>Hint 1</summary>
+  <div>
+   Try exploring all integers. (Credits: @annujoshi)
+  </div>
+ </details>
+</div>
+<div>
+ <details>
+  <summary>Hint 2</summary>
+  <div>
+   Use the sorted property of integers to reduced the search space. (Credits: @annujoshi)
+  </div>
+ </details>
+</div>
+

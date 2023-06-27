@@ -42,24 +42,19 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int searchInsert(int[] nums, int target) {
-        int left = 0;
-        int right = nums.length-1;
-        int result = 0;
-        while (left<=right){
-            int mid = left + (right-left)/2;
+        int leftIdx = 0,rightIdx = nums.length-1;
+        int mid = -1;
+        while (leftIdx<=rightIdx){
+            mid = leftIdx + (rightIdx-leftIdx)/2;
             if (nums[mid]>target){
-                right = mid-1;
-                result = mid;
-            }else if (nums[mid] <target){
-                left = mid +1;
-                result = left;
-            } else if(nums[mid] == target) {
-                result = mid;
-                break;
+                rightIdx = mid-1;
+            }else if (nums[mid]<target){
+                leftIdx = mid+1;
+            }else {
+                return mid;
             }
-
         }
-        return result;
+        return nums[mid]>target?mid:mid+1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

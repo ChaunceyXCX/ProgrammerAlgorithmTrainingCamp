@@ -31,21 +31,18 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int search(int[] nums, int target) {
-        int left = 0;
-        int right = nums.length-1;
-        int reult = -1;
-        //左闭右闭
-        while (left<=right){  //因为是左闭右闭所以当左右相等是也要进入循环判断
-            int mid = (right-left)/2+left;
-            if (nums[mid]>target){
-                right = mid-1;    //注1
-            }else if (nums[mid]<target){
-                left = mid+1;     //注2 - 注1与注二两个地方可以理解为
-            }else {
+        int leftIdx = 0,rightIdx = nums.length-1;
+        while (leftIdx<=rightIdx){
+            int mid = leftIdx+(rightIdx-leftIdx)/2;
+            if (nums[mid] == target){
                 return mid;
+            }else if(nums[mid]<target){
+                leftIdx = mid+1;
+            }else {
+                rightIdx = mid-1;
             }
         }
-        return reult;
+        return -1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

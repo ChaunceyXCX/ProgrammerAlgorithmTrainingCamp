@@ -50,7 +50,8 @@ class Solution {
             dp[i][3] = dp[i-1][2];
         }
 
-        return Math.max(dp[len-1][3],Math.max(dp[len-1][1],dp[len-1][2])); //买入状态不可能是最大的
+        //买入状态不可能是最大的
+        return Math.max(dp[len-1][3],Math.max(dp[len-1][1],dp[len-1][2]));
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
