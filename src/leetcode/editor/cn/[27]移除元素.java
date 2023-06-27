@@ -61,12 +61,12 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int removeElement(int[] nums, int val) {
-        int left = 0,right = nums.length-1;
+        int left = 0, right = nums.length - 1;
         while (left<=right){
-            while (nums[left] != val && left<= right){
+            while (left<=right && nums[left] != val){
                 ++left;
             }
-            while (nums[right] == val && left<=right){
+            while (left<=right && nums[right] == val){
                 --right;
             }
             if (left<right){
